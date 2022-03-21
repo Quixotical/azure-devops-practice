@@ -1,15 +1,20 @@
 from typing import AnyStr, Dict
 
 class Repo():
-    full_name: str
-    subscribers_count: str
+    _full_name: str
+    _subscribers_count: str
+    _error: str
 
     def __init__(self, repo_info: Dict) -> None:
-        self.full_name = repo_info["full_name"]
-        self.subscribers_count = repo_info["subscribers_count"]
+        self._full_name = repo_info.get("full_name", '')
+        self._subscribers_count = repo_info.get("subscribers_count", '')
+        self._error = repo_info.get("error", '')
 
     def get_name(self) -> AnyStr:
-        return self.name
+        return self._full_name
 
     def get_subscribers(self) -> AnyStr:
-        return self.subscribers_count
+        return self._subscribers_count
+    
+    def is_error(self) -> bool:
+        return self._error != ""

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Dict
+from typing import AnyStr, Dict
 
 class API(ABC):
     url: str
@@ -10,4 +10,8 @@ class API(ABC):
 
     @abstractmethod
     def get_repo() -> Dict:
+        pass
+
+    @abstractmethod
+    def get_repo_url() -> AnyStr:
         pass

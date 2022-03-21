@@ -1,10 +1,15 @@
-from typing import Dict
-from api import API
+from typing import AnyStr, Dict
+from src.api import API
+from src.repo import Repo
 import requests
 
-from repo import Repo
-
-class GithubApi(API):
+class GithubApi(API):   
     def get_repo(self) -> Repo:
-        response = requests.get(self.url)
-        return Repo(response.json())
+        try:
+            response = requests.get(self.url)
+            return Repo(response.json())
+        except requests.ConnectionError as err:
+            return Repo({"error": str(err)})
+    
+    def get_repo_url(self) -> AnyStr:
+        return self.url

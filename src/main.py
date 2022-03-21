@@ -1,6 +1,6 @@
 from typing import AnyStr, List
-from github_api import GithubApi
-from repo import Repo
+from src.github_api import GithubApi
+from src.repo import Repo
 
 OWNER_PROMPT_REPO = "Please Enter repo owner\n"
 NAME_PROMPT_REPO = "Please Enter repo name\n"

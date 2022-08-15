@@ -24,6 +24,11 @@ resource "azurerm_resource_group" "test_group" {
   location = "switzerlandnorth"
 }
 
+variable "imagebuild" {
+  type = string
+  description = "latest image build"
+}
+
 resource "azurerm_container_group" "tfcg_test" {
   name                = "weatherapi"
   location            = azurerm_resource_group.test_group.location
@@ -35,7 +40,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
   container {
     name   = "weatherapi"
-    image  = "quixotical/weatherapi"
+    image  = "quixotical/weatherapi:${var.imagebuild}"
     cpu    = "1"
     memory = "1"
 

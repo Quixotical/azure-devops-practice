@@ -291,3 +291,4 @@ __pycache__/
 *.tfstate*
 *.lock*
 *.terraform
+.venv
